@@ -1,0 +1,19 @@
+{
+  "name": "deletabot",
+  "version": "1.0.0",
+  "description": "Deleta mensagens no discord.",
+  "main": "index.js",
+  "repository": "git@github.com:igorwessel/deletabot.git",
+  "author": "igorwessel <igor_wessel@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "momentjs": "^2.0.0",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "discord.js": "^12.1.1"
+  }
+}
