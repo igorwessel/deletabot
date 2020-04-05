@@ -1,8 +1,8 @@
 const discord = require('discord.js')
 const client = new discord.Client()
+require('dotenv/config')
 
-
-client.login('Njk2Mjg4NTQxNjI1NTQ4ODIx.XomkqQ.EST9kZi7XQhONHSE6yQ588PBIWg')
+client.login(process.env.TOKEN)
 
 client.on('message', async msg => {
     const channel = msg.channel
