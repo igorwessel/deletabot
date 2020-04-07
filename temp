@@ -1,0 +1,33 @@
+   if(date1.isAfter(date2)){
+        channel.messages
+        .fetch({
+          limit: 50,
+        })
+        .then((response) => {
+          response.map((msg) => {
+            if (
+              date1.isAfter(new moment(msg.createdAt)) &&
+              date2.isBefore(new moment(msg.createdAt))
+            )
+              msg.delete({
+                timeout: 0,
+              });
+          });
+        });
+      } else {
+        channel.messages
+        .fetch({
+          limit: 50,
+        })
+        .then((response) => {
+          response.map((msg) => {
+            if (
+              date1.isBefore(new moment(msg.createdAt)) &&
+              date2.isAfter(new moment(msg.createdAt))
+            )
+              msg.delete({
+                timeout: 0,
+              });
+          });
+        });
+      }

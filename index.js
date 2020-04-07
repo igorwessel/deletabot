@@ -12,7 +12,7 @@ client.on("message", async (msg) => {
   if (command === ".d") {
     let date1;
     let date2;
-
+    let date;
     channel.messages
       .fetch({
         limit: 50,
@@ -42,15 +42,22 @@ client.on("message", async (msg) => {
         limit: 50,
       })
       .then((response) => {
+          response.sort((responseA, responseB ) => (responseA.createdAt < responseB.createdAt)? 1:-1 )
+        response.map( msg => {
+           date = new moment(msg.createdTimestamp)
+            console.log(date.format("hh:mm"))
+        })
         response.map((msg) => {
           if (
-            date1.isAfter(new moment(msg.createdAt)) &&
-            date2.isBefore(new moment(msg.createdAt))
+            date1.isBefore(new moment(msg.createdAt)) &&
+            date2.isAfter(new moment(msg.createdAt))
           )
             msg.delete({
               timeout: 0,
-            });
-        });
-      });
+            })
+        })
+      })
   }
+  if(msg.content.includes('.d'))
+    msg.delete()
 });
